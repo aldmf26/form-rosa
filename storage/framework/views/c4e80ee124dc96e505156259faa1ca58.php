@@ -1,0 +1,1 @@
+components.label<?php /**PATH C:\laragon\www\kasirok\storage\framework\views/cc4dc4485714cba23b791e533d01e395.blade.php ENDPATH**/ ?>
