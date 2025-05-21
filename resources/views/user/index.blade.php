@@ -2,10 +2,48 @@
     <x-slot name="header">
         <div class="d-flex justify-content-between">
             <h3>{{ $title }}</h3>
-            {{-- <button type="button" data-bs-toggle="modal" data-bs-target="#tambah" class="btn btn-primary"><i
-                    class="fa fa-plus"></i> Tambah</button> --}}
+            <button type="button" data-bs-toggle="modal" data-bs-target="#tambah" class="btn btn-primary"><i
+                    class="fa fa-plus"></i> Tambah</button>
+            
         </div>
 
+        <form action="" method="post">
+                @csrf
+                <x-modal idModal="tambah" title="Tambah User" size="modal-lg">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Nama</label>
+                                <input type="text" name="name" class="form-control" placeholder="Masukkan Nama">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Masukkan Email">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Role</label>
+                                <select name="role" class="form-control">
+                                    <option value="">-- Pilih Role --</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="presiden">Presiden</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" name="password" class="form-control"
+                                    placeholder="Masukkan Password">
+                            </div>
+                        </div>
+                    </div>
+
+                </x-modal>
+            </form>
     </x-slot>
 
 

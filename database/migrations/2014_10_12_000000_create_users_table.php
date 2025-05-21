@@ -17,8 +17,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->enum('role', ['owner', 'kasir', 'presiden']);
-            $table->unsignedBigInteger('business_id')->nullable(); // hanya dipakai owner
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_active')->default(false); // nanti presiden yang mengaktifkannya

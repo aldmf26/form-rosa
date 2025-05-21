@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Addon;
 use App\Models\Business;
+use App\Models\Pendaftaran;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,8 +25,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Aldi',
                 'email' => 'aldi@gmail.com',
-                'role' => 'presiden',
                 'password' => bcrypt('password'),
+                'is_active' => 1
             ],
         ];
 
@@ -34,25 +35,6 @@ class UserSeeder extends Seeder
             $user->assignRole('presiden');
         }
 
-        Subscription::create([
-            'name' => 'Gratis 5 hari',
-            'price' => 0,
-        ]);
-
-        Subscription::create([
-            'name' => 'Bulanan',
-            'price' => 20000,
-        ]);
-
-        Subscription::create([
-            'name' => 'Tahunan',
-            'price' => 280000,
-        ]);
-
-        Addon::create([
-            'name' => 'Multi Kasir', 
-            'price' => 4000,
-            'description' => 'Membuat lebih dari satu kasir'
-        ]);
-    }   
+        Pendaftaran::factory()->count(20)->create();
+    }
 }

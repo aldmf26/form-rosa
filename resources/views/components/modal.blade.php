@@ -3,6 +3,7 @@
     'size' => '',
     'title' => '',
     'btnSave' => 'Y',
+    'btnHapus' => 'T',
     'color_header' => '',
     'disabled' => false,
 ])
@@ -34,8 +35,19 @@
                 @endif
                 @if ($btnSave == 'Y')
                     <button type="submit"
-                        class="float-end btn btn-primary sbutton-save-modal">Simpan</button>
-                    
+                        class="float-end btn btn-primary sbutton-save-modal"
+                       
+                        >
+                        Simpan
+                    </button>
+                @endif
+                @if ($btnHapus == 'Y')
+                    <button type="button" wire:click='delete'
+                        class="float-end btn btn-outline-danger sbutton-save-modal"
+                        onclick="this.disabled=true; this.form.submit();"
+                        >
+                        Hapus
+                    </button>
                 @endif
 
             </div>

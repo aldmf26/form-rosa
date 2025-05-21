@@ -10,19 +10,6 @@
                 <i class="fa-solid fa-bars fs-5"></i>
             </a>
 
-            <a href="#" class="d-none text-color ms-2 burger-btn d-block">
-                <i class="text-color fa-solid fa-calendar-days fs-5"></i>
-
-                <span class="text-color ms-2">
-                    {{ \Carbon\Carbon::now()->locale('id_ID')->translatedFormat('l, j F Y') }}
-                </span>
-                |
-                <i class="text-color fa-solid fa-clock"></i>
-                <span>
-                    {{ \Carbon\Carbon::now()->locale('id_ID')->translatedFormat('H:i') }}
-                </span>
-            </a>
-
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -39,32 +26,19 @@
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0">{{ strtoupper(Auth::user()->name) }}</h6>
                                 <p class="mb-0 text-sm text-success">
-                                    
-                                    @php
-                                        $idSubscription = auth()->user()->business->subscription_id;
-                                    @endphp
-                                    @if ($idSubscription == 1)
-                                        <span class="badge bg-info">Gratis</span>
-                                    @elseif ($idSubscription == 2)
-                                        <span class="badge bg-primary">Bulanan</span>
-                                    @elseif ($idSubscription == 3)
-                                        <span class="badge bg-success">Tahunan</span>
-                                    @endif
-                                    |
+                                  
                                     {{ ucwords(auth()->user()->roles[0]->name) }}
                                 </p>
                             </div>
                             <div class="user-img d-flex align-items-center">
                                 <div class="avatar avatar-md">
-                                    <img src="{{ Auth::user()->profile_photo_url }}">
+                                    {{-- <img src="{{ Auth::user()->profile_photo_url }}"> --}}
                                 </div>
                             </div>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                        <li>
-                            <h6 class="dropdown-header">Langganan aktif sampai: <br> {{ tanggalId(auth()->user()->business->subscription_end) }}</h6>
-                        </li>
+                        
                         <li><a class="dropdown-item" href="{{ route('profile.show') }}"><i
                                     class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>

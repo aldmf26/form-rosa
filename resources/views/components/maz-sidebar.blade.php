@@ -11,9 +11,8 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo d-flex justify-content-center align-items-center">
                     <a href="{{ $href }}">
-                        <img src="{{ auth()->user()->business->getFirstMediaUrl('logo') }}" alt="Logo" class="mx-auto d-block">
+                        <img src="{{ asset('/images/logo/english.png') }}" alt="Logo" class="">
                     </a>
-                    <p class="text-center">{{ auth()->user()->business->name }}</p>
                 </div>
                 <div class="sidebar-toggler  x">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>

@@ -64,8 +64,8 @@ class User extends Authenticatable implements HasMedia
         'profile_photo_url',
     ];
 
-    public function business()
+    public function getNameAttribute($value)
     {
-        return $this->belongsTo(Business::class);
+        return ucwords($value);
     }
 }
