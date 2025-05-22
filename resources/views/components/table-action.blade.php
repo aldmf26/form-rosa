@@ -9,25 +9,14 @@
                 <option value="50">50</option>
                 <option value="100">100</option>
             </select>
-            <div wire:loading wire:target="perPage">
-                <div class="spinner-border spinner-border-sm text-primary ms-2" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
+          
         </div>
     </div>
 
     <div class="d-flex gap-2">
         <div class="input-group" style="width: 250px;">
-
-
             <input wire:model.live="search" type="text" class="form-control" placeholder="{{ $placeholder }}"
                 aria-label="Search">
-            <div wire:loading wire:target="search">
-                <div class="spinner-border spinner-border-sm text-primary ms-2" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
         </div>
         @if ($filter)
             <div class="dropdown">
@@ -45,6 +34,66 @@
                 </ul>
             </div>
         @endif
+        <div class="dropdown">
+            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="tanggalDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-calendar"></i> Tanggal
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="tanggalDropdown">
+                <li><a class="dropdown-item" href="#"
+                        @click="viewByBulan = !viewByBulan; viewByCustom = false">Bulan Tahun</a></li>
+                <li><a class="dropdown-item" href="#"
+                        @click="viewByCustom = !viewByCustom; viewByBulan = false">Custom</a></li>
+            </ul>
+        </div>
 
+        <div x-show="viewByBulan">
+            <select class="form-control" id="bulan" wire:model.live="bulan">
+                <option value="01">Januari</option>
+                <option value="02">Februari</option>
+                <option value="03">Maret</option>
+                <option value="04">April</option>
+                <option value="05">Mei</option>
+                <option value="06">Juni</option>
+                <option value="07">Juli</option>
+                <option value="08">Agustus</option>
+                <option value="09">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+        </div>
+        <div x-show="viewByBulan">
+            <select class="form-control" id="tahun" wire:model.live="tahun">
+                @for ($year = now()->year; $year >= 2024; $year--)
+                    <option value="{{ $year }}">{{ $year }}</option>
+                @endfor
+            </select>
+        </div>
+
+        <div x-show="viewByCustom">
+            <input type="date" class="form-control" id="dari" wire:model.live="dari">
+        </div>
+        <div x-show="viewByCustom">
+            <input type="date" class="form-control" id="sampai" wire:model.live="sampai">
+        </div>
+
+        <div x-show="viewByBulan || viewByCustom">
+            <button class="btn btn-sm btn-primary" type="button" @click="viewByBulan = false; viewByCustom = false"
+                wire:click="resetFilter">
+                <i class="fa fa-refresh"></i> Reset
+            </button>
+        </div>
+        <div>
+            <a wire:click='export' class="btn btn-sm btn-success"><i class="fa fa-file-excel"></i> Export</a>
+        </div>
+        <div>
+            <div wire:loading>
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>

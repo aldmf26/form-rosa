@@ -1,4 +1,6 @@
  <div class="section mt-3" x-data="{
+    viewByBulan: false,
+    viewByCustom: false,
      nama_lengkap: '',
      id: '',
      openModal(modal) {
@@ -9,6 +11,8 @@
          Livewire.on('closeModal', () => {
              $('#hapus').modal('hide');
              $('#tambah').modal('hide');
+             $('#modalPerbulan').modal('hide');
+             $('#modalCustom').modal('hide') ;
          });
      },
  }">
@@ -54,6 +58,7 @@
 <?php $component = $__componentOriginal3cb096f2e62c7df2672a776d39e07de4; ?>
 <?php unset($__componentOriginal3cb096f2e62c7df2672a776d39e07de4); ?>
 <?php endif; ?>
+
              <table class="table table-hover table-bordered">
                  <thead>
                      <tr>
@@ -61,7 +66,29 @@
                          <th>Nama</th>
                          <th>No Telepon</th>
                          <th>Tanggal Daftar</th>
-                         <th>Aktif</th>
+                         <th>
+                            Aktif
+                            <?php if (isset($component)) { $__componentOriginal7875b222dc4d64f17fd6d2e345da8799 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal7875b222dc4d64f17fd6d2e345da8799 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.tooltip','data' => ['title' => 'Aktifkan/Nonaktifkan pendaftaran']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('tooltip'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => 'Aktifkan/Nonaktifkan pendaftaran']); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal7875b222dc4d64f17fd6d2e345da8799)): ?>
+<?php $attributes = $__attributesOriginal7875b222dc4d64f17fd6d2e345da8799; ?>
+<?php unset($__attributesOriginal7875b222dc4d64f17fd6d2e345da8799); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal7875b222dc4d64f17fd6d2e345da8799)): ?>
+<?php $component = $__componentOriginal7875b222dc4d64f17fd6d2e345da8799; ?>
+<?php unset($__componentOriginal7875b222dc4d64f17fd6d2e345da8799); ?>
+<?php endif; ?>
+                        </th>
                          <th width="150">Aksi</th>
                      </tr>
                  </thead>

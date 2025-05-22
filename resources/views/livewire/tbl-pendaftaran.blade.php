@@ -1,4 +1,6 @@
  <div class="section mt-3" x-data="{
+    viewByBulan: false,
+    viewByCustom: false,
      nama_lengkap: '',
      id: '',
      openModal(modal) {
@@ -9,6 +11,8 @@
          Livewire.on('closeModal', () => {
              $('#hapus').modal('hide');
              $('#tambah').modal('hide');
+             $('#modalPerbulan').modal('hide');
+             $('#modalCustom').modal('hide') ;
          });
      },
  }">
@@ -16,6 +20,7 @@
          <div class="col-lg-12">
              <x-alert />
              <x-table-action placeholder="cari pendaftar" filter="true" />
+
              <table class="table table-hover table-bordered">
                  <thead>
                      <tr>
@@ -23,7 +28,10 @@
                          <th>Nama</th>
                          <th>No Telepon</th>
                          <th>Tanggal Daftar</th>
-                         <th>Aktif</th>
+                         <th>
+                            Aktif
+                            <x-tooltip title="Aktifkan/Nonaktifkan pendaftaran" />
+                        </th>
                          <th width="150">Aksi</th>
                      </tr>
                  </thead>

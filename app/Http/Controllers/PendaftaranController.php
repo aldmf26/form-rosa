@@ -18,10 +18,10 @@ class PendaftaranController extends Controller
         return view('pendaftaran.index', $data);
     }
 
-
     public function detail($nomor)
     {
         $pendaftar = Pendaftaran::where('no_hp', $nomor)->first();
         return view('pendaftaran.detail', compact('pendaftar'));
     }
+
 }

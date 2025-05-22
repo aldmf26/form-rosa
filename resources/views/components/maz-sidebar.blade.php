@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo d-flex justify-content-center align-items-center">
                     <a href="{{ $href }}">
-                        <img src="{{ asset('/images/logo/english.png') }}" alt="Logo" class="">
+                        <img src="{{ asset('/images/logo/logo.png') }}" alt="Logo" class="">
                     </a>
                 </div>
                 <div class="sidebar-toggler  x">

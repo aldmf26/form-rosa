@@ -2,16 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\PendaftaranExport;
 use App\Http\Livewire\Traits\WithTableSearch;
 use App\Models\Pendaftaran;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Excel as MaatwebsiteExcel;
 
 class TblPendaftaran extends Component
 {
     use WithPagination, WithTableSearch;
     public $idSelected, $form = [];
-
+   
     public function store()
     {
         $this->form['is_active'] = true;
@@ -39,6 +41,19 @@ class TblPendaftaran extends Component
         $kasir->delete();
         session()->flash('sukses', "Nama : $kasir->name berhasil dihapus.");
         $this->dispatch('closeModal');
+    }
+
+    public function export()
+    {
+        // Ambil data yang sudah difilter
+        $query = Pendaftaran::query()->orderBy('id', 'desc');
+        $pendaftar = $this->applyTableFilters($query)->get();
+
+        // Inisialisasi instance Excel
+        $excel = app(MaatwebsiteExcel::class);
+
+        // Ekspor data yang sudah difilter
+        return $excel->download(new PendaftaranExport($pendaftar), 'pendaftaran_' . now()->format('Y-m-d_H-i-s') . '.xlsx');
     }
 
     public function render()

@@ -39,7 +39,7 @@ unset($__defined_vars); ?>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo d-flex justify-content-center align-items-center">
                     <a href="<?php echo e($href); ?>">
-                        <img src="<?php echo e(asset('/images/logo/english.png')); ?>" alt="Logo" class="">
+                        <img src="<?php echo e(asset('/images/logo/logo.png')); ?>" alt="Logo" class="">
                     </a>
                 </div>
                 <div class="sidebar-toggler  x">

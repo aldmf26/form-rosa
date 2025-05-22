@@ -46,10 +46,10 @@ unset($__defined_vars); ?>
 
 <div <?php echo e($attributes->merge(['id' => $idModal])); ?>
 
-    <?php if($disabled): ?> data-bs-backdrop="false" <?php endif; ?> class="modal tambah" role="dialog"
+    <?php if($disabled): ?> data-bs-backdrop="false" <?php endif; ?> class="modal fade tambah" role="dialog"
     aria-labelledby="myModalLabel" wire:ignore.self>
     <div class="modal-dialog   <?php echo e($size); ?>" role="document">
-        <div class="modal-content">
+        <div class="modal-content ">
             <div class="modal-header <?php echo e($color_header); ?>">
                 <h4 class="modal-title" <?php echo e($attributes->merge(['id' => $idModal])); ?>>
                     <?php echo e($title); ?>

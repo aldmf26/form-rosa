@@ -25,7 +25,7 @@
 
     <div class="coming-soon text-center text-white">
         <div class="flex items-center justify-center">
-            <img src="{{ asset('/images/logo/english.png') }}" alt=""
+            <img src="{{ asset('/images/logo/logo.png') }}" alt=""
                 style="width: 150px; height: auto; filter: drop-shadow(2px 4px 6px black);">
         </div>
         <h1 id="title" class="text-4xl md:text-6xl font-bold mb-4 opacity-0">Kas<span

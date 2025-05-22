@@ -20,12 +20,13 @@
             <?php if(auth()->guard()->guest()): ?>
                 <div class="text-center">
                     <?php
+                        $noOwner = config('app.no_owner');
                         $url = request()->url();
                         $nama = $pendaftar->nama_lengkap;
                         $pesan = "Saya%20 $nama %20ingin%20mengonfirmasi%20pendaftaran%20penerimaan%20inggris%20di%20$url";
                     ?>
 
-                    <a href="https://wa.me/62895413111053?text=<?php echo e($pesan); ?>" target="_blank"
+                    <a href="https://wa.me/<?php echo e($noOwner); ?>?text=<?php echo e($pesan); ?>" target="_blank"
                         class="btn btn-success">Konfirmasi</a>
                 </div>
             <?php endif; ?>

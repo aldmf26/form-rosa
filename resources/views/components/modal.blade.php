@@ -9,10 +9,10 @@
 ])
 
 <div {{ $attributes->merge(['id' => $idModal]) }}
-    @if ($disabled) data-bs-backdrop="false" @endif class="modal tambah" role="dialog"
+    @if ($disabled) data-bs-backdrop="false" @endif class="modal fade tambah" role="dialog"
     aria-labelledby="myModalLabel" wire:ignore.self>
     <div class="modal-dialog   {{ $size }}" role="document">
-        <div class="modal-content">
+        <div class="modal-content ">
             <div class="modal-header {{ $color_header }}">
                 <h4 class="modal-title" {{ $attributes->merge(['id' => $idModal]) }}>
                     {{ $title }}
