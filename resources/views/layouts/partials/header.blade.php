@@ -9,8 +9,7 @@
             <a href="#" class="burger-btn d-block badge bg-primary">
                 <i class="fa-solid fa-bars fs-5"></i>
             </a>
-
-
+            @livewire('form-nohp')
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,7 +25,7 @@
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0">{{ strtoupper(Auth::user()->name) }}</h6>
                                 <p class="mb-0 text-sm text-success">
-                                  
+
                                     {{ ucwords(auth()->user()->roles[0]->name) }}
                                 </p>
                             </div>
@@ -38,7 +37,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                        
+
                         <li><a class="dropdown-item" href="{{ route('profile.show') }}"><i
                                     class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>
@@ -59,8 +58,7 @@
                                 <i class="icon-mid bi bi-box-arrow-left me-2"></i>
                                 {{ __('Logout') }}
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </li>

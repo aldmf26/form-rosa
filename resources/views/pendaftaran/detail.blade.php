@@ -2,6 +2,7 @@
     <div class="container py-5">
         @auth
             <a href="{{ url()->previous() }}" class="btn btn-secondary"> Kembali</a>
+            <a href="{{ url()->previous() }}" class="btn btn-success"><i class="fas fa-print"></i> Print</a>
 
         @endauth
         <div class="mb-4">
@@ -11,7 +12,7 @@
             @guest
                 <div class="text-center">
                     @php
-                        $noOwner = config('app.no_owner');
+                        $noOwner = DB::table('nohp_admin')->first()->nohp;
                         $url = request()->url();
                         $nama = $pendaftar->nama_lengkap;
                         $pesan = "Saya%20 $nama %20ingin%20mengonfirmasi%20pendaftaran%20penerimaan%20inggris%20di%20$url";
