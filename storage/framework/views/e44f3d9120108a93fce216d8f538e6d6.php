@@ -8,10 +8,12 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-sm btn-primary">Simpan </button>
-                @if (session()->has('sukses'))
-                    {{ session()->get('sukses') }}
-                @endif
+                <!--[if BLOCK]><![endif]--><?php if(session()->has('sukses')): ?>
+                    <?php echo e(session()->get('sukses')); ?>
+
+                <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
             </div>
         </div>
     </form>
 </div>
+<?php /**PATH C:\laragon\www\form-inggirs\resources\views/livewire/form-nohp.blade.php ENDPATH**/ ?>

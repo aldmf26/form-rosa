@@ -10,9 +10,18 @@
 <?php $component->withAttributes(['title' => 'Detail Pendaftar']); ?>
     <div class="container py-5">
         <?php if(auth()->guard()->check()): ?>
-            <a href="<?php echo e(url()->previous()); ?>" class="btn btn-secondary"> Kembali</a>
+            <a href="<?php echo e(url()->previous()); ?>" class="btn btn-secondary btn-sm btn-kembali"> Kembali</a>
 
         <?php endif; ?>
+        <style>
+            @media print {
+                .btn-print,
+                .btn-kembali {
+                    display: none;
+                }
+            }
+        </style>
+        <a href="#" onclick="window.print();" class="btn btn-success btn-sm btn-print">Print</a>
         <div class="mb-4">
             <h4 class="text-center text-success"><?php echo e(config('app.name')); ?></h4>
             <p class="text-center text-muted">Halaman ini berisi informasi lengkap mengenai pendaftar.</p>
@@ -20,7 +29,7 @@
             <?php if(auth()->guard()->guest()): ?>
                 <div class="text-center">
                     <?php
-                        $noOwner = config('app.no_owner');
+                        $noOwner = DB::table('nohp_admin')->first()->nohp;
                         $url = request()->url();
                         $nama = $pendaftar->nama_lengkap;
                         $pesan = "Saya%20 $nama %20ingin%20mengonfirmasi%20pendaftaran%20penerimaan%20inggris%20di%20$url";

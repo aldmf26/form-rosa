@@ -9,8 +9,22 @@
             <a href="#" class="burger-btn d-block badge bg-primary">
                 <i class="fa-solid fa-bars fs-5"></i>
             </a>
+            <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('form-nohp');
 
+$__html = app('livewire')->mount($__name, $__params, 'lw-88785905-0', $__slots ?? [], get_defined_vars());
 
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -26,7 +40,7 @@
                             <div class="user-name text-end me-3">
                                 <h6 class="mb-0"><?php echo e(strtoupper(Auth::user()->name)); ?></h6>
                                 <p class="mb-0 text-sm text-success">
-                                  
+
                                     <?php echo e(ucwords(auth()->user()->roles[0]->name)); ?>
 
                                 </p>
@@ -39,7 +53,7 @@
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                        
+
                         <li><a class="dropdown-item" href="<?php echo e(route('profile.show')); ?>"><i
                                     class="icon-mid bi bi-person me-2"></i> My
                                 Profile</a></li>
@@ -62,8 +76,7 @@
                                 <?php echo e(__('Logout')); ?>
 
                             </a>
-                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
-                                style="display: none;">
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                 <?php echo csrf_field(); ?>
                             </form>
                         </li>

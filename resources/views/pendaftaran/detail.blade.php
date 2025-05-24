@@ -1,10 +1,18 @@
 <x-guest-layout title="Detail Pendaftar">
     <div class="container py-5">
         @auth
-            <a href="{{ url()->previous() }}" class="btn btn-secondary"> Kembali</a>
-            <a href="{{ url()->previous() }}" class="btn btn-success"><i class="fas fa-print"></i> Print</a>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary btn-sm btn-kembali"> Kembali</a>
 
         @endauth
+        <style>
+            @media print {
+                .btn-print,
+                .btn-kembali {
+                    display: none;
+                }
+            }
+        </style>
+        <a href="#" onclick="window.print();" class="btn btn-success btn-sm btn-print">Print</a>
         <div class="mb-4">
             <h4 class="text-center text-success">{{ config('app.name') }}</h4>
             <p class="text-center text-muted">Halaman ini berisi informasi lengkap mengenai pendaftar.</p>

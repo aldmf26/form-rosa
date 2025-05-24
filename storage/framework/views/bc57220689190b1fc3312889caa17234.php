@@ -33,6 +33,7 @@ unset($__defined_vars); ?>
         margin-left: 90%;
     }
 </style>
+
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
@@ -46,6 +47,7 @@ unset($__defined_vars); ?>
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
+            
             <div class="d-flex justify-content-center align-items-center mt-4">
                 <div class="theme-toggle d-flex gap-2 align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
