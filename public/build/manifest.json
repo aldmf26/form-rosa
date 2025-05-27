@@ -141,6 +141,11 @@
     "isEntry": true,
     "src": "resources/js/app.js"
   },
+  "resources/js/dark.js": {
+    "file": "assets/dark-46654567.js",
+    "isEntry": true,
+    "src": "resources/js/dark.js"
+  },
   "resources/sass/app.scss": {
     "file": "assets/app-d8218618.css",
     "isEntry": true,
