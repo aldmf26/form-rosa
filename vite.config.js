@@ -19,6 +19,7 @@ export default defineConfig({
                 "resources/sass/bootstrap.scss",
                 "resources/sass/themes/dark/app-dark.scss",
                 "resources/js/app.js",
+                "resources/js/dark.js",
                 "resources/css/app.css",
                 "resources/sass/app.scss",
                 "resources/sass/pages/auth.scss"
