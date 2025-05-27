@@ -1,4 +1,5 @@
-<?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js', 'resources/js/dark.js']); ?>
+<?php echo app('Illuminate\Foundation\Vite')(['resources/js/app.js']); ?>
+
 
 <script src="<?php echo e(asset('/vendors/perfect-scrollbar/perfect-scrollbar.min.js')); ?>"></script>
 <script src="<?php echo e(asset('/vendors/tinymce/tinymce.min.js')); ?>"></script>
@@ -18,6 +19,8 @@
 
 
 <script>
+
+    
     $("#example").dataTable({
         columnDefs: [{
             "defaultContent": "-",

@@ -42,7 +42,7 @@ endif;
 unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 </div>
                 <div class="mb-3">
-                    <label>Alamat <span class="text-danger">*</span></label>
+                    <label>Alamat Lengkap<span class="text-danger">*</span></label>
                     <textarea wire:model="form.alamat" placeholder="Contoh : Jl. Raya No. 1" class="form-control" rows="1" required></textarea>
                     <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['form.alamat'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -98,7 +98,7 @@ unset($__errorArgs, $__bag); ?><!--[if ENDBLOCK]><![endif]-->
                 </div>
                 <div class="mb-3">
                     <label>Nama Panggilan <span style="font-size: 12px" class="text-muted">(Diambil dari nama lengkap)</span></label>
-                    <input :value="nama" wire:model="form.nama_panggilan" type="text" readonly id="nama" name="nama_panggilan" class="form-control" required>
+                    <input placeholder="Contoh : Budi" wire:model="form.nama_panggilan" type="text" id="nama" name="nama_panggilan" class="form-control" required>
                     <!--[if BLOCK]><![endif]--><?php $__errorArgs = ['form.nama_panggilan'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

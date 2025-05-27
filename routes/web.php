@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
                 Route::post('/', 'store')->name('store');
                 Route::get('/absen', 'absen')->name('absen');
                 Route::post('/update', 'update')->name('update');
+                Route::get('/hapus/{id}', 'destroy')->name('hapus');
+
             });
         Route::controller(PermissionRoleController::class)
             ->prefix('permission')

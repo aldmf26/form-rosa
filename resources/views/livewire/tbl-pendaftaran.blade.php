@@ -25,7 +25,7 @@
                  <thead>
                      <tr>
                          <th class="text-center">No</th>
-                         <th>Nama</th>
+                         <th>Nama Lengkap</th>
                          <th>No Telepon</th>
                          <th>Tanggal Daftar</th>
                          <th>
@@ -87,7 +87,7 @@
                              class="form-control">
                      </div>
                      <div class="mb-3">
-                         <label>Alamat <span class="text-danger">*</span></label>
+                         <label>Alamat Lengkap<span class="text-danger">*</span></label>
                          <textarea wire:model="form.alamat" placeholder="Contoh : Jl. Raya No. 1" class="form-control" rows="1" required></textarea>
                      </div>
 
@@ -112,7 +112,7 @@
                      <div class="mb-3">
                          <label>Nama Panggilan <span style="font-size: 12px" class="text-muted">(Diambil dari nama
                                  lengkap)</span></label>
-                         <input :value="nama" wire:model="form.nama_panggilan" type="text" readonly id="nama"
+                         <input placeholder="Contoh : Budi"  wire:model="form.nama_panggilan" type="text"  id="nama"
                              name="nama_panggilan" class="form-control" required>
                      </div>
                      <div class="mb-3">

@@ -15,7 +15,7 @@
         <a href="#" onclick="window.print();" class="btn btn-success btn-sm btn-print">Print</a>
         <div class="mb-4">
             <h4 class="text-center text-success">{{ config('app.name') }}</h4>
-            <p class="text-center text-muted">Halaman ini berisi informasi lengkap mengenai pendaftar.</p>
+            <p class="text-center text-muted">Terimakasih atas pendaftaran anda. <br> Silahkan melakukan konfirmasi dibawah ini.</p>
 
             @guest
                 <div class="text-center">
@@ -23,7 +23,7 @@
                         $noOwner = DB::table('nohp_admin')->first()->nohp;
                         $url = request()->url();
                         $nama = $pendaftar->nama_lengkap;
-                        $pesan = "Saya%20 $nama %20ingin%20mengonfirmasi%20pendaftaran%20penerimaan%20inggris%20di%20$url";
+                        $pesan = "Hi Circle, Saya%20 $nama %20ingin%20mengonfirmasi%20pendaftaran%20di%20$url";
                     @endphp
 
                     <a href="https://wa.me/{{ $noOwner }}?text={{ $pesan }}" target="_blank"

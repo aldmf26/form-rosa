@@ -24,7 +24,7 @@
         <a href="#" onclick="window.print();" class="btn btn-success btn-sm btn-print">Print</a>
         <div class="mb-4">
             <h4 class="text-center text-success"><?php echo e(config('app.name')); ?></h4>
-            <p class="text-center text-muted">Halaman ini berisi informasi lengkap mengenai pendaftar.</p>
+            <p class="text-center text-muted">Terimakasih atas pendaftaran anda. <br> Silahkan melakukan konfirmasi dibawah ini.</p>
 
             <?php if(auth()->guard()->guest()): ?>
                 <div class="text-center">

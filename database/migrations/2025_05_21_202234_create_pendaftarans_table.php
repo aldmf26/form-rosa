@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_hp');
             $table->string('nama_lengkap');
+            $table->string('nama_panggilan');
             $table->string('alamat');
             $table->string('instagram_facebook')->nullable();
             $table->string('tempat_lahir');

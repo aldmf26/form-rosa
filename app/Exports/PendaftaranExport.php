@@ -26,6 +26,7 @@ class PendaftaranExport implements FromCollection, WithHeadings, WithStyles
                 'ID Pendaftar' => $item->id,
                 'No Telepon' => $item->no_hp,
                 'Nama Lengkap' => $item->nama_lengkap,
+                'Nama Panggilan' => $item->nama_panggilan,
                 'Alamat' => $item->alamat,
                 'Instagram/Facebook' => $item->instagram_facebook,
                 'Tempat Lahir' => $item->tempat_lahir,
@@ -47,6 +48,7 @@ class PendaftaranExport implements FromCollection, WithHeadings, WithStyles
             'ID Pendaftar',
             'No Telepon',
             'Nama Lengkap',
+            'Nama Panggilan',
             'Alamat',
             'Instagram/Facebook',
             'Tempat Lahir',
@@ -63,9 +65,9 @@ class PendaftaranExport implements FromCollection, WithHeadings, WithStyles
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:N' . $sheet->getHighestRow())->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
+        $sheet->getStyle('A1:O' . $sheet->getHighestRow())->getBorders()->getAllBorders()->setBorderStyle(Border::BORDER_THIN);
 
-        $sheet->getStyle('A1:P1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:Q1')->getFont()->setBold(true);
 
         foreach ($sheet->getColumnIterator() as $column) {
             $sheet->getColumnDimension($column->getColumnIndex())->setAutoSize(true);

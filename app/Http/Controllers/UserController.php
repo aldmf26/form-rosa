@@ -60,6 +60,12 @@ class UserController extends Controller
             $user->roles()->sync([$r->role[$i]]);
         }
 
-        return redirect()->route('user.index')->with(['sukses' => 'User Updated']);
+        return redirect()->route('user.index')->with('sukses', 'User Updated');
+    }
+
+    public function destroy($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->route('user.index')->with('sukses', 'User Deleted');
     }
 }

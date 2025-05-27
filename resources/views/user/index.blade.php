@@ -109,6 +109,9 @@
                                         <button type="submit" x-show="edit" class="btn btn-sm btn-success"><i
                                                 class="fa fa-check"></i>
                                             Simpan</button>
+
+                                        <a href="{{ route('user.hapus', $user->id) }}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" type="button" x-show="!edit" class="btn btn-sm btn-danger"><i
+                                                class="fa fa-trash"></i> Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

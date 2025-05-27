@@ -21,7 +21,7 @@
                     @error('form.instagram_facebook') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
-                    <label>Alamat <span class="text-danger">*</span></label>
+                    <label>Alamat Lengkap<span class="text-danger">*</span></label>
                     <textarea wire:model="form.alamat" placeholder="Contoh : Jl. Raya No. 1" class="form-control" rows="1" required></textarea>
                     @error('form.alamat') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Nama Panggilan <span style="font-size: 12px" class="text-muted">(Diambil dari nama lengkap)</span></label>
-                    <input :value="nama" wire:model="form.nama_panggilan" type="text" readonly id="nama" name="nama_panggilan" class="form-control" required>
+                    <input placeholder="Contoh : Budi" wire:model="form.nama_panggilan" type="text" id="nama" name="nama_panggilan" class="form-control" required>
                     @error('form.nama_panggilan') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
