@@ -15,9 +15,9 @@
                         <img src="{{ asset('/images/logo/logo.png') }}" alt="Logo" class="">
                     </a>
                 </div>
-                <div class="sidebar-toggler  x">
+                {{-- <div class="sidebar-toggler  x">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                </div>
+                </div> --}}
             </div>
             
             <div class="d-flex justify-content-center align-items-center mt-4">
