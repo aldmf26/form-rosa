@@ -1,6 +1,6 @@
  <div class="section mt-3" x-data="{
-    viewByBulan: false,
-    viewByCustom: false,
+     viewByBulan: false,
+     viewByCustom: false,
      nama_lengkap: '',
      id: '',
      openModal(modal) {
@@ -12,10 +12,27 @@
              $('#hapus').modal('hide');
              $('#tambah').modal('hide');
              $('#modalPerbulan').modal('hide');
-             $('#modalCustom').modal('hide') ;
+             $('#modalCustom').modal('hide');
          });
      },
  }">
+
+     <!--[if BLOCK]><![endif]--><?php if($filterType === 'custom' && ($dari || $sampai)): ?>
+         <h6>Data Per Tanggal:
+             <!--[if BLOCK]><![endif]--><?php if($dari && $sampai): ?>
+                 <?php echo e(tanggal($dari)); ?> ~ <?php echo e(tanggal($sampai)); ?>
+
+             <?php elseif($dari): ?>
+                 Mulai: <?php echo e(tanggal($dari)); ?>
+
+             <?php else: ?>
+                 Sampai: <?php echo e(tanggal($sampai)); ?>
+
+             <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+         </h6>
+     <?php else: ?>
+         <h6>Data Per Bulan: <?php echo e(\Carbon\Carbon::createFromDate(null, $bulan, 1)->locale('id_ID')->monthName); ?> <?php echo e(empty($tahun)  ? date('Y') : $tahun); ?></h6>
+     <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
      <div class="row">
          <div class="col-lg-12">
              <?php if (isset($component)) { $__componentOriginal5194778a3a7b899dcee5619d0610f5cf = $component; } ?>
@@ -67,8 +84,8 @@
                          <th>No Telepon</th>
                          <th>Tanggal Daftar</th>
                          <th>
-                            Aktif
-                            <?php if (isset($component)) { $__componentOriginal7875b222dc4d64f17fd6d2e345da8799 = $component; } ?>
+                             Aktif
+                             <?php if (isset($component)) { $__componentOriginal7875b222dc4d64f17fd6d2e345da8799 = $component; } ?>
 <?php if (isset($attributes)) { $__attributesOriginal7875b222dc4d64f17fd6d2e345da8799 = $attributes; } ?>
 <?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.tooltip','data' => ['title' => 'Aktifkan/Nonaktifkan pendaftaran']] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
 <?php $component->withName('tooltip'); ?>
@@ -88,7 +105,7 @@
 <?php $component = $__componentOriginal7875b222dc4d64f17fd6d2e345da8799; ?>
 <?php unset($__componentOriginal7875b222dc4d64f17fd6d2e345da8799); ?>
 <?php endif; ?>
-                        </th>
+                         </th>
                          <th width="150">Aksi</th>
                      </tr>
                  </thead>
@@ -161,8 +178,8 @@
                      </div>
                      <div class="mb-3">
                          <label>Nama Lengkap <span class="text-danger">*</span></label>
-                         <input x-model="nama" wire:model="form.nama_lengkap" type="text" placeholder="Contoh : Budi" id="nama"
-                             name="nama_lengkap" class="form-control" required>
+                         <input x-model="nama" wire:model="form.nama_lengkap" type="text" placeholder="Contoh : Budi"
+                             id="nama" name="nama_lengkap" class="form-control" required>
                      </div>
 
                      <div class="mb-3">
@@ -172,7 +189,7 @@
                              class="form-control">
                      </div>
                      <div class="mb-3">
-                         <label>Alamat <span class="text-danger">*</span></label>
+                         <label>Alamat Lengkap<span class="text-danger">*</span></label>
                          <textarea wire:model="form.alamat" placeholder="Contoh : Jl. Raya No. 1" class="form-control" rows="1" required></textarea>
                      </div>
 
@@ -197,8 +214,8 @@
                      <div class="mb-3">
                          <label>Nama Panggilan <span style="font-size: 12px" class="text-muted">(Diambil dari nama
                                  lengkap)</span></label>
-                         <input  wire:model="form.nama_panggilan" type="text"  id="nama"
-                             name="nama_panggilan" class="form-control" required>
+                         <input placeholder="Contoh : Budi" wire:model="form.nama_panggilan" type="text"
+                             id="nama" name="nama_panggilan" class="form-control" required>
                      </div>
                      <div class="mb-3">
                          <label>Sekolah Di <span class="text-danger">*</span></label>

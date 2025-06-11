@@ -6,6 +6,7 @@ use App\Exports\PendaftaranExport;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Excel;
+use Livewire\Attributes\Url;
 
 trait WithTableSearch
 {
@@ -14,62 +15,73 @@ trait WithTableSearch
     public $statusFilter = null;
 
     // Tambahkan properti untuk filter tanggal
-    public $bulan = '';
-    public $tahun = '';
-    public $dari = '';
-    public $sampai = '';
-
+    #[Url]
+    public $bulan,
+        $tahun,
+        $dari,
+        $sampai;
+    #[Url]
+    public $filterType = 'bulan';
     public function mountWithTableSearch()
     {
-        $this->bulan = date('m'); // Set bulan default ke bulan saat ini
-        $this->tahun = date('Y'); // Set tahun default ke tahun saat ini
-        $this->dari = Carbon::now()->startOfMonth()->format('Y-m-d');
-        $this->sampai = Carbon::now()->endOfMonth()->format('Y-m-d');
+        // Inisialisasi default
+        $this->bulan = $this->bulan ?? date('m'); // Gunakan nilai dari URL jika ada
+        $this->tahun = $this->tahun ?? date('Y');
+        $this->dari = $this->dari ?? null; // Jangan set default ke awal bulan
+        $this->sampai = $this->sampai ?? null; // Jangan set default ke akhir bulan
+        $this->filterType = $this->filterType ?? 'bulan'; // Default ke filter bulan
     }
 
     public function updatedPerPage($value)
     {
         $this->perPage = $value;
+        $this->resetPage();
     }
 
     public function updatedBulan()
     {
+        $this->filterType = 'bulan';
+        $this->dari = null;
+        $this->sampai = null;
         $this->resetPage();
     }
 
     public function updatedTahun()
     {
+        $this->filterType = 'bulan';
+        $this->dari = null;
+        $this->sampai = null;
         $this->resetPage();
     }
 
     public function updatedDari()
     {
+        $this->filterType = 'custom';
+        $this->bulan = null;
+        $this->tahun = null;
         $this->resetPage();
     }
 
     public function updatedSampai()
     {
+        $this->filterType = 'custom';
+        $this->bulan = null;
+        $this->tahun = null;
         $this->resetPage();
     }
-    
-    /**
-     * Reset filter search, status, dan tanggal
-     */
+
     public function resetFilter()
     {
-        $now = Carbon::now();
-        $this->bulan = $now->format('m');
-        $this->tahun = $now->year;
-        $this->dari = '';
-        $this->sampai = '';
+        $this->bulan = date('m');
+        $this->tahun = date('Y');
+        $this->dari = null;
+        $this->sampai = null;
+        $this->filterType = 'bulan';
+        $this->search = '';
+        $this->statusFilter = null;
         $this->resetPage();
     }
 
-   
-
-    /**
-     * Terapkan filter standar: search, status, dan tanggal
-     */
     public function applyTableFilters(Builder $query, array $searchableColumns = ['nama_lengkap']): Builder
     {
         if ($this->search) {
@@ -86,19 +98,18 @@ trait WithTableSearch
             $query->where('is_active', false);
         }
 
-        // Filter berdasarkan Bulan dan Tahun
-        if ($this->bulan && $this->tahun) {
+        // Filter berdasarkan tipe
+        if ($this->filterType === 'bulan' && $this->bulan && $this->tahun) {
             $query->whereMonth('tanggal_daftar', $this->bulan)
                   ->whereYear('tanggal_daftar', $this->tahun);
-        }
-
-        // Filter berdasarkan Rentang Tanggal Kustom
-        if ($this->dari && $this->sampai) {
-            $query->whereBetween('tanggal_daftar', [$this->dari, $this->sampai]);
-        } elseif ($this->dari) {
-            $query->where('tanggal_daftar', '>=', $this->dari);
-        } elseif ($this->sampai) {
-            $query->where('tanggal_daftar', '<=', $this->sampai);
+        } elseif ($this->filterType === 'custom') {
+            if ($this->dari && $this->sampai) {
+                $query->whereBetween('tanggal_daftar', [$this->dari, $this->sampai]);
+            } elseif ($this->dari) {
+                $query->where('tanggal_daftar', '>=', $this->dari);
+            } elseif ($this->sampai) {
+                $query->where('tanggal_daftar', '<=', $this->sampai);
+            }
         }
 
         return $query;

@@ -1,6 +1,6 @@
  <div class="section mt-3" x-data="{
-    viewByBulan: false,
-    viewByCustom: false,
+     viewByBulan: false,
+     viewByCustom: false,
      nama_lengkap: '',
      id: '',
      openModal(modal) {
@@ -12,10 +12,24 @@
              $('#hapus').modal('hide');
              $('#tambah').modal('hide');
              $('#modalPerbulan').modal('hide');
-             $('#modalCustom').modal('hide') ;
+             $('#modalCustom').modal('hide');
          });
      },
  }">
+
+     @if ($filterType === 'custom' && ($dari || $sampai))
+         <h6>Data Per Tanggal:
+             @if ($dari && $sampai)
+                 {{ tanggal($dari) }} ~ {{ tanggal($sampai) }}
+             @elseif ($dari)
+                 Mulai: {{ tanggal($dari) }}
+             @else
+                 Sampai: {{ tanggal($sampai) }}
+             @endif
+         </h6>
+     @else
+         <h6>Data Per Bulan: {{ \Carbon\Carbon::createFromDate(null, $bulan, 1)->locale('id_ID')->monthName }} {{ empty($tahun)  ? date('Y') : $tahun }}</h6>
+     @endif
      <div class="row">
          <div class="col-lg-12">
              <x-alert />
@@ -29,9 +43,9 @@
                          <th>No Telepon</th>
                          <th>Tanggal Daftar</th>
                          <th>
-                            Aktif
-                            <x-tooltip title="Aktifkan/Nonaktifkan pendaftaran" />
-                        </th>
+                             Aktif
+                             <x-tooltip title="Aktifkan/Nonaktifkan pendaftaran" />
+                         </th>
                          <th width="150">Aksi</th>
                      </tr>
                  </thead>
@@ -76,8 +90,8 @@
                      </div>
                      <div class="mb-3">
                          <label>Nama Lengkap <span class="text-danger">*</span></label>
-                         <input x-model="nama" wire:model="form.nama_lengkap" type="text" placeholder="Contoh : Budi" id="nama"
-                             name="nama_lengkap" class="form-control" required>
+                         <input x-model="nama" wire:model="form.nama_lengkap" type="text" placeholder="Contoh : Budi"
+                             id="nama" name="nama_lengkap" class="form-control" required>
                      </div>
 
                      <div class="mb-3">
@@ -112,8 +126,8 @@
                      <div class="mb-3">
                          <label>Nama Panggilan <span style="font-size: 12px" class="text-muted">(Diambil dari nama
                                  lengkap)</span></label>
-                         <input placeholder="Contoh : Budi"  wire:model="form.nama_panggilan" type="text"  id="nama"
-                             name="nama_panggilan" class="form-control" required>
+                         <input placeholder="Contoh : Budi" wire:model="form.nama_panggilan" type="text"
+                             id="nama" name="nama_panggilan" class="form-control" required>
                      </div>
                      <div class="mb-3">
                          <label>Sekolah Di <span class="text-danger">*</span></label>
